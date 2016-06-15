@@ -85,6 +85,18 @@ public class SeaGridAdapter : ISeaGrid
 	{
 		return _MyGrid.HitTile(row, col);
 	}
+
+	/// <summary>
+	/// IsDesirableTarget calls upon _MyGrid and true when a given row or
+	/// column contains an enemy ship.
+	/// </summary>
+	/// <param name="row">the row at which is being shot</param>
+	/// <param name="col">the cloumn at which is being shot</param>
+	/// <returns>A boolean true if an enemy ship is within the row or column, otherwise false.</returns>
+	public bool IsDesirableTarget(int row, int col){
+		return _MyGrid.IsDesirableTarget(row, col);
+	}
+
 	#endregion
 
 }

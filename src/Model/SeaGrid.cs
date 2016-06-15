@@ -197,6 +197,33 @@ public class SeaGrid : ISeaGrid
 			}
 		}
 	}
+
+	/// <summary>
+	/// IsDesirableTarget returns true when a given row or column contains an enemy
+	/// ship.
+	/// </summary>
+	/// <param name="row">the row at which is being shot</param>
+	/// <param name="col">the cloumn at which is being shot</param>
+	/// <returns>A boolean true if an enemy ship is within the row or column, otherwise false.</returns>
+	public bool IsDesirableTarget(int row, int col){
+		//tile is already hit
+		if (_GameTiles[row, col].Shot) {
+			return false;
+		}
+
+		//there is no ship on the tile
+		if (_GameTiles[row, col].Ship == null) {
+			return false;
+		}
+
+		//all ship's tiles have been destroyed
+		if (_GameTiles[row, col].Ship.IsDestroyed) {
+			return false;
+		}
+
+		//else hit but not destroyed
+		return true;
+	}
 }
 
 //=======================================================

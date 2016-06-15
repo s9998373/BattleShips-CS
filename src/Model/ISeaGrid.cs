@@ -37,4 +37,13 @@ public interface ISeaGrid
 	/// <param name="col">the column of the tile</param>
 	/// <returns>the result of the attack</returns>
 	AttackResult HitTile(int row, int col);
+
+	/// <summary>
+	/// IsDesirableTarget returns true when a given row or column contains an enemy
+	/// ship.
+	/// </summary>
+	/// <param name="row">the row at which is being shot</param>
+	/// <param name="col">the cloumn at which is being shot</param>
+	/// <returns>A boolean true if an enemy ship is within the row or column, otherwise false.</returns>
+	bool IsDesirableTarget(int row, int col);
 }

@@ -128,8 +128,7 @@ public abstract class AIPlayer : Player
 	/// </summary>
 	private void Delay()
 	{
-		int i = 0;
-		for (i = 0; i <= 150; i++) {
+		for (int i = 0; i <= 20; i++) {
 			//Dont delay if window is closed
 			if (SwinGame.WindowCloseRequested())
 				return;

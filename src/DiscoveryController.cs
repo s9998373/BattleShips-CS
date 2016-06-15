@@ -27,7 +27,32 @@ static class DiscoveryController
 		}
 
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
-			DoAttack();
+			if (SwinGame.KeyDown(KeyCode.vk_LSHIFT) && SwinGame.KeyDown(KeyCode.vk_LALT)){
+				DoAutomatedAttack();
+			}else{
+				DoAttack();
+			}
+		}
+	}
+
+	/// <summary>
+	/// Attack the first row/column containing an enemy ship. Starting from the top and working right.
+	/// </summary>
+	private static void DoAutomatedAttack(){
+		ISeaGrid grid = GameController.HumanPlayer.EnemyGrid;
+		bool targetFound = false;
+		for (int i = 0; i < GameController.HumanPlayer.EnemyGrid.Height; i++){
+			for (int j = 0; j < GameController.HumanPlayer.EnemyGrid.Width; j++){
+				if (grid.IsDesirableTarget(i, j) == true){
+					Console.WriteLine("Target found at: ({0}, {1})", i, j);
+					GameController.Attack(i, j);
+					targetFound = true;
+					break;
+				}
+			}
+			if (targetFound){
+				break;
+			}
 		}
 	}
 
