@@ -207,21 +207,15 @@ public class SeaGrid : ISeaGrid
 	/// <returns>A boolean true if an enemy ship is within the row or column, otherwise false.</returns>
 	public bool IsDesirableTarget(int row, int col){
 		//tile is already hit
-		if (_GameTiles[row, col].Shot) {
-			return false;
-		}
-
+		//OR
 		//there is no ship on the tile
-		if (_GameTiles[row, col].Ship == null) {
-			return false;
-		}
-
+		//OR
 		//all ship's tiles have been destroyed
-		if (_GameTiles[row, col].Ship.IsDestroyed) {
+		if (_GameTiles[row, col].Shot || _GameTiles[row, col].Ship == null || _GameTiles[row, col].Ship.IsDestroyed) {
 			return false;
 		}
 
-		//else hit but not destroyed
+		//else desirable target
 		return true;
 	}
 }

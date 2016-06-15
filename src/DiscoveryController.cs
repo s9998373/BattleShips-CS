@@ -36,7 +36,7 @@ static class DiscoveryController
 	}
 
 	/// <summary>
-	/// Attack the first row/column containing an enemy ship. Starting from the top and working right.
+	/// Attack the first row/column containing an enemy ship. Starting from the top and working right O(n^2).
 	/// </summary>
 	private static void DoAutomatedAttack(){
 		ISeaGrid grid = GameController.HumanPlayer.EnemyGrid;
