@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 MAC="Mac OS X"
 WIN="Windows"
 LIN="Linux"
